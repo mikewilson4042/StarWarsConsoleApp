@@ -12,15 +12,19 @@ namespace StarWars
                 Console.WriteLine("Please enter expected passenger count for your flight and press enter:  ");
                 string input = Console.ReadLine();
 
+                Console.WriteLine("Please enter expected cargo count for your flight and press enter:  ");
+                string inputCargo = Console.ReadLine();
+
                 //inform user
                 Console.WriteLine("Retrieving Flight Data...");
                 Console.WriteLine("    ");
 
-                int userPassengerRequirement = Utilities.ValidatePassengerCount(input);
-                if (userPassengerRequirement > 0)
+                int userPassengerRequirement = Utilities.ValidateCount(input);
+                int userCargoRequirement = Utilities.ValidateCount(inputCargo);
+                if (userPassengerRequirement > 0 || userCargoRequirement > 0)
                 {
                     //get actual ship data
-                    GetShipData(userPassengerRequirement);
+                    GetShipData(userPassengerRequirement, userCargoRequirement);
                 }
                 else
                 {
@@ -55,12 +59,12 @@ namespace StarWars
             string[] recall = new string[0];
             Main(recall);
         }
-        private static void GetShipData(int userPassengerRequirement)
+        private static void GetShipData(int userPassengerRequirement, int userCargoRequirement)
         {
             try
             {
                 Starships shipData = new Starships();
-                var displayData = shipData.GetStarshipData(userPassengerRequirement);
+                var displayData = shipData.GetStarshipData(userPassengerRequirement, userCargoRequirement);
                 int i = 0;
                 //display ship data
                 foreach (string data in displayData)

@@ -55,7 +55,7 @@ namespace StarWars
 
         }
 
-        public static int ValidatePassengerCount(string entry)
+        public static int ValidateCount(string entry)
         {
             try
             {
@@ -74,18 +74,18 @@ namespace StarWars
                 return 0;
             }
         }
-        public static int GetPassengerValue(string sPassenger)
+        public static int GetIntValue(string sString)
         {
             int returnValue = 0;
             try
             {
-                if (sPassenger == "" || sPassenger == null)
+                if (sString == "" || sString == null)
                 {
                     return 0;
                 }
                 else
                 {
-                    returnValue = int.Parse(sPassenger);
+                    returnValue = int.Parse(sString);
                     return returnValue;
                 }
             }
